@@ -1,0 +1,22 @@
+. $HOME/.bash-env/bash/colors
+
+HOST=`hostname`
+
+# different color prompt based on hostname and/or privileged
+if [ $HOST = 'login.nmt.edu' ]; then 
+    COLOR=$GREEN
+elif [ $HOST = 'login.cs.nmt.edu' ]; then
+    COLOR=$VIOLET
+elif [ $HOST = 'sioux' ]; then
+    COLOR=$RED
+elif [ EUID == 0 ]; then
+    COLOR=$YELLOW
+else
+    COLOR=$WHITE
+fi
+
+# set prompt to "<user>@<host>:<pwd>(<git-branch>)$ "
+export PS1="$COLOR\u$BLACK@$COLOR\h:$BLUE\w$BLACK\$(__git_ps1 | tr -d ' ')\$$RESET "
+
+# my basic prompt, commented out for now
+# PS1="[\[$RED\]\W>\[$NULL\]] "

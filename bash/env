@@ -1,0 +1,22 @@
+# set environment variables
+
+# editor
+export EDITOR=vim
+export CLICOLOR=yes
+
+# ignore useless parts of history
+export HISTIGNORE="&:ls:[bf]g:exit:bye:ll:lsa:la:gcc:[ \t]*"
+
+# default paths
+# MacPorts
+export PATH=/opt/local/bin:opt/local/sbin:$PATH
+
+# CUDA
+export PATH=/Developer/NVIDIA/CUDA-5.5/bin:$PATH
+export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-5.5/lib:$DYLD_LIBRARY_PATH
+
+# my path
+export PATH=$HOME/bin:$HOME/local/bin:$PATH
+
+# prefix
+export PREFIX=/usr/local
