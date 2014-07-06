@@ -1,0 +1,66 @@
+fu! ClosePair(char)
+  if getline('.')[col('.') - 1] == a:char
+    return "\<Right>"
+  else
+    return a:char
+  endif
+endf
+
+fu! CloseBracket()
+  if match(getline(line('.') + 1), '\s*}') < 0
+    return "\<CR>}"
+  else
+    return "\<Esc>j0f}a"
+  endif
+endf
+
+fu! QuoteDelim(char)
+  let line = getline('.')
+  let col = col('.')
+
+  if line[col - 2] == "\\"
+    "Inserting a quoted quotation mark into the string
+    return a:char
+  elseif line[col - 1] == a:char
+    "Escaping out of the string
+    return "\<Right>"
+  else
+    "Starting a string
+    return a:char.a:char."\<Esc>i"
+  endif
+endf
+
+fu! OpenNewTabAndCommandT()
+  :tabnew
+  :CommandTFlush
+  :CommandT
+endf
+
+fu! StripTrailingWhitespaces()
+  " last search and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+
+  " remove trailing whitespaces
+  %s/\s\+$//e
+
+  " restore previous search history and cursor position
+  let @/=_s
+  call cursor(l, c)
+endf
+
+fu! WrapSelection()
+  let tag = input('Tag: ')
+  if len(tag) > 0
+    normal `>
+    if &selection == 'exclusive'
+      exe 'normal i</'.tag.'>'
+    else
+      exe 'normal a</'.tag.'>'
+    endif
+    normal `<
+    exe 'normal i<'.tag.'>'
+    normal `<
+  endif
+endf

@@ -1,0 +1,37 @@
+# my preferred aliases, either out of pure laziness or maybe convenience
+
+# ls
+alias ll='ls -lt'
+alias lx='ls -X'
+alias lal='ls -la'
+alias cls='clear;ls'
+alias rls='reset;ls'
+alias cl='clear'
+
+# data moving
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# information
+alias du='du -h'
+
+# grep
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias psg='ps aux | grep'
+
+# ssh
+alias cs='ssh -i $HOME/.ssh/school sturner@login.cs.nmt.edu'
+alias tcc='ssh -i $HOME/.ssh/school -X sturner@login64.nmt.edu'
+alias rainbow='ssh -i $HOME/.ssh/school -X sturner@rainbow.nmt.edu'
+
+# archive
+alias tarball='tar -czvf'
+alias untar='tar -xzvf'
+
+# misc
+alias bye='exit'
+
+# umask set rxw------
+umask 0077

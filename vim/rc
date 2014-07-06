@@ -1,0 +1,179 @@
+set nocompatible
+filetype off
+
+" use Vundle
+set rtp+=~/.dotfiles/vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" bundles
+Bundle 'gagoar/StripWhiteSpaces'
+Bundle 'wincent/Command-T'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-surround'
+Bundle 'scrooloose/syntastic'
+Bundle 'lunaru/vim-less'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-session'
+Bundle 'godlygeek/tabular'
+Bundle 'nelstrom/vim-visual-star-search'
+Bundle 'mileszs/ack.vim'
+Bundle 'nono/vim-handlebars'
+Bundle 'kchmck/vim-coffee-script'
+
+" snipmate dependencies
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'honza/vim-snippets'
+" snipmate
+Bundle 'garbas/vim-snipmate'
+
+filetype plugin indent on
+
+colorscheme ir_black
+
+" set up vim-rspec
+map <Leader>1 :call RunCurrentSpecFile()<CR>
+map <Leader>2 :call RunNearestSpec()<CR>
+map <Leader>3 :call RunLastSpec()<CR>
+
+" how I prefer my tabs/spaces
+set ts=2 sts=2 sw=2 expandtab
+
+" autosave/load sessions
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+
+" use Smarty
+au BufRead,BufNewFile *.tpl set filetype=smarty.html
+
+" set the leader key to the comma
+let mapleader=','
+
+" source custom functions
+so ~/.dotfiles/vim/functions
+
+" toggle invisibles with ,i
+nmap <leader>i :set list!<cr>
+
+" toggle cursorline highlighting
+nmap <leader>c :set cursorline!<cr>
+
+" toggle spellcheck with ,s
+nmap <leader>s :set spell!<cr>
+
+" toggle previous buffer with ,,
+" nmap <leader><leader> <c-^>
+
+" clear search highlighting with ctrl+l
+nmap <C-l> :nohlsearch<cr>
+
+" open files in the same directory as the current file
+cnoremap %% <c-r>=expand('%:h').'/'<cr>
+map <leader>e :edit %%
+map <leader>v :view %%
+
+" auto bracket and quotation insertion
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap { {}<Esc>i
+autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
+inoremap ) <c-r>=ClosePair(')')<CR>
+inoremap ] <c-r>=ClosePair(']')<CR>
+inoremap } <c-r>=CloseBracket()<CR>
+inoremap " <c-r>=QuoteDelim('"')<CR>
+inoremap ' <c-r>=QuoteDelim("'")<CR>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" tabularize
+nmap <leader><TAB> :Tab<CR>
+
+" a visual reminder of an 80-character line
+if exists('+colorcolumn')
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
+" don't autofold, but still allow manual folding
+set foldlevel=100
+
+set autoindent
+set smartindent
+set hidden
+set hlsearch
+set list
+set number
+set ruler
+set smarttab
+set showcmd
+set wildmenu
+set ignorecase
+set smartcase
+set scrolloff=5
+set backspace=indent,eol,start " backspace over everything
+set directory=~/tmp
+set t_Co=256
+
+" mimic TextMate's invisible characters
+set listchars=tab:▸\ ,eol:¬
+
+if isdirectory('/usr/local/lib/python2.7/site-packages/powerline')
+  " user Powerline
+  set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+  set noshowmode
+else
+  " show current file (filetype) on the left and
+  " [cursor position line,colum] [number of lines] on the right
+  set statusline=%F%m%r%h%w\ (%{&ft})\ %=[%l,%v]\ [%L\ lines]
+endif
+
+" show the status line
+set laststatus=2
+
+syntax enable
