@@ -1,0 +1,41 @@
+so ~/.dotfiles/vim/rc
+
+set spell
+set cursorline
+set guifont=PragmataPro:h18
+set guioptions-=T
+set guioptions-=r
+set guioptions-=l
+
+" slow down cursor blink
+set guicursor=a:blinkon1000-blinkoff1000
+
+noremap <D-r> :CommandTFlush<CR>
+noremap <D-S-d> yy p :startinsert<CR>
+
+inoremap <D-S-d> <Esc>yy p :startinsert<CR>
+inoremap <D-CR> <Esc>o
+inoremap <D-S-CR> <Esc>O
+
+vnoremap <C-W> <Esc>:call WrapSelection()<CR>
+
+if has("gui_macvim")
+  macmenu &File.New\ Tab key=<nop>
+  noremap <D-t> :call OpenNewTabAndCommandT()<CR>
+  inoremap <D-t> <Esc>:call OpenNewTabAndCommandT()<CR>
+
+  "if matchstr(hostname(), 'ateles') == 'Ateles'
+  "  set fu
+  "endif
+
+   map <D-1> :tabfirst<CR>
+   map <D-2> :tabfirst<CR>gt
+   map <D-3> :tabfirst<CR>3gt
+   map <D-4> :tabfirst<CR>4gt
+   map <D-5> :tabfirst<CR>5gt
+   map <D-6> :tabfirst<CR>6gt
+   map <D-7> :tabfirst<CR>7gt
+   map <D-8> :tabfirst<CR>8gt
+   map <D-9> :tabfirst<CR>9gt
+   map <D-0> :tabfirst<CR>10gt
+endif
