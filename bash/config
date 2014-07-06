@@ -9,6 +9,8 @@ elif [ $HOST = 'login.cs.nmt.edu' ]; then
     COLOR=$VIOLET
 elif [ $HOST = 'sioux' ]; then
     COLOR=$RED
+elif [ $HOST = 'mindslaver' ]; then
+    COLOR=$RED
 elif [ EUID == 0 ]; then
     COLOR=$YELLOW
 else

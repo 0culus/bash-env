@@ -9,6 +9,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " bundles
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'gagoar/StripWhiteSpaces'
 Bundle 'wincent/Command-T'
 Bundle 'Lokaltog/vim-easymotion'
@@ -79,17 +80,27 @@ map <leader>e :edit %%
 map <leader>v :view %%
 
 " auto bracket and quotation insertion
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap { {}<Esc>i
+"inoremap ( ()<Esc>i
+"inoremap [ []<Esc>i
+"inoremap { {}<Esc>i
 autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
-inoremap ) <c-r>=ClosePair(')')<CR>
-inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=CloseBracket()<CR>
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
+"inoremap ) <c-r>=ClosePair(')')<CR>
+"inoremap ] <c-r>=ClosePair(']')<CR>
+"inoremap } <c-r>=CloseBracket()<CR>
+"inoremap " <c-r>=QuoteDelim('"')<CR>
+"inoremap ' <c-r>=QuoteDelim("'")<CR>
 
+set runtimepath+=~/.dotfiles/vim/.vim_runtime
 
+source ~/.dotfiles/vim/.vim_runtime/vimrcs/basic.vim
+source ~/.dotfiles/vim/.vim_runtime/vimrcs/filetypes.vim
+source ~/.dotfiles/vim/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.dotfiles/vim/.vim_runtime/vimrcs/extended.vim
+
+try
+    source ~/.dotfiles/vim/.vim_runtime/my_configs.vim
+catch
+endtry
 
 
 
